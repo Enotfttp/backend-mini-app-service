@@ -1,6 +1,7 @@
 package ru.tgbot.backendminiappservice.dto;
 
 import ru.tgbot.backendminiappservice.entities.Task;
+import ru.tgbot.backendminiappservice.enums.TaskPriorityEnum;
 import ru.tgbot.backendminiappservice.enums.TaskStatusEnum;
 import ru.tgbot.backendminiappservice.enums.TaskTypeEnum;
 
@@ -14,6 +15,7 @@ public record TaskDto(
         String todoTime,
         TaskStatusEnum status,
         TaskTypeEnum type,
+        TaskPriorityEnum priority,
         UUID userId
 ) {
     public static TaskDto from(Task task) {
@@ -24,6 +26,7 @@ public record TaskDto(
                 task.getTodoTime(),
                 task.getStatus(),
                 task.getType(),
+                task.getPriority(),
                 task.getUser() != null ? task.getUser().getId() : null
         );
     }

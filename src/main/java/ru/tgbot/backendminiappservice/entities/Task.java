@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 import ru.tgbot.backendminiappservice.enums.TaskStatusEnum;
 import ru.tgbot.backendminiappservice.enums.TaskTypeEnum;
+import ru.tgbot.backendminiappservice.enums.TaskPriorityEnum;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -37,7 +38,11 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
+    
+    @NotNull
     private TaskStatusEnum status;
+    @NotNull
     private TaskTypeEnum type;
+    @NotNull
+    private TaskPriorityEnum priority;
 }
